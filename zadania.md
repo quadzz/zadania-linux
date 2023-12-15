@@ -49,8 +49,7 @@ Wypisz wszystkie procesy wykonujace komendę bash
 
 # systemd
 Pobierz poniższy plik binarny node_exportera.
-(`cd /tmp && curl -
-OL https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz`)
+(`cd /tmp && curl -OL https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz`)
 (cd /tmp && tar -xvf /tmp/node_exporter-1.2.2.linux-amd64.tar.gz)
 
 Utwórz użytkownika o nazwie node_exporter z katalogiem domowym
@@ -67,12 +66,13 @@ W utworzonym katalogu wklej poniższą konfigurację
 ```text
 [Unit]
 Description=Node Exporter
-After=network.target
+Requires=node_exporter.socket
+
 [Service]
 User=node_exporter
-Group=node_exporter
-Type=simple
-ExecStart=/usr/local/bin/node_exporter
+EnvironmentFile=/etc/sysconfig/node_exporter
+ExecStart=/usr/sbin/node_exporter --web.systemd-socket $OPTIONS
+
 [Install]
 WantedBy=multi-user.target
 ```
