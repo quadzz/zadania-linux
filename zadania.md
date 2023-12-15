@@ -42,8 +42,48 @@ Wyświetl 5 procesów najbardziej obciążających pamięć RAM procesów z prze
 
 Wyświetl wszystkie procesy związane z protokołem ssh, a następnie wyświetl je w następującym formacie (pomiń proces grepa). Nazwa procesu nie powinna zawierać dwukropka na końcu
 
-https://github.com/navdeep-G/samplemod
-Wyświetl wszystkie pliki pythona, jakie znajdują się w folderze ~/repo. Ze wspomnianych plików, wyświetl łączną liczbę ich linijek
+Pobierz repozytorium https://github.com/navdeep-G/samplemod<br/>
+Wyświetl wszystkie pliki pythona, jakie znajdują się w repozytorium Ze wspomnianych plików, wyświetl łączną liczbę ich linijek
 
 Wypisz wszystkie procesy wykonujace komendę bash
 
+# systemd
+Pobierz poniższy plik binarny node_exportera.
+(`cd /tmp && curl -
+OL https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz`)
+(cd /tmp && tar -xvf /tmp/node_exporter-1.2.2.linux-amd64.tar.gz)
+
+Utwórz użytkownika o nazwie node_exporter z katalogiem domowym
+
+Utwórz grupę o takiej samej nazwie
+
+Dodaj użytkownika node_exporter do grupy node_exporter
+
+Przenieś pobraną binarkę do katalogu /user/local/bin oraz dodaj prawa własności użytkownika i grupy na node_exporter
+
+W katalogu /etc/systemd/system utwórz plik usługi node_exportera o nazwie node_exporter.service
+
+W utworzonym katalogu wklej poniższą konfigurację
+```text
+[Unit]
+Description=Node Exporter
+After=network.target
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
+[Install]
+WantedBy=multi-user.target
+```
+Wykonaj przeładowanie konfiguracji daemonów przy pomocy systemctl daemon-reload
+
+Następnie wykorzystując polecenie systemctl uruchom usługę node_exportera Sprawdź status uruchomionej usługi oraz czy usługa będzie uruchomiona przy restarcie systemu
+
+Określ PID uruchomionego procesu
+
+Zabij określony proces
+
+Zweryfikuj czy proces przestał działać, sprawdź również status usługi
+
+Zrestartuj usługę z poziomu komendy systemctl i zweryfikuj status jej aktywności
