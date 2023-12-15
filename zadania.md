@@ -92,6 +92,8 @@ Zrestartuj usługę z poziomu komendy systemctl i zweryfikuj status jej aktywno�
 
 Napisz skrypt, który będzie wyświetlał zawartość katalogu, który zostanie przekazany do skryptu jako argument wywołania.
 
+Napisz skrypt, który poprosi użytkownika o podanie dwóch liczb, a następnie wyświetli ich sumę, różnicę, iloczyn i iloraz.
+
 Napisz skrypt, zliczający liczbę linii w syslogu (/var/log/syslog).
 
 Napisz skrypt zliczający liczbę plików o podanym rozszerzeniu w zadanym katalogu. Typ rozszerzenia ma być podawany do pliku jako zewnętrzny argument. Do tego możesz wykorzystać repozytorium pobrane w ćwiczeniu dotyczącym przetwarzania strumieni danych
