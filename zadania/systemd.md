@@ -22,7 +22,7 @@ Requires=node_exporter.socket
 [Service]
 User=node_exporter
 EnvironmentFile=/etc/sysconfig/node_exporter
-ExecStart=/usr/sbin/node_exporter --web.systemd-socket $OPTIONS
+ExecStart=/usr/local/bin/node_exporter --web.systemd-socket $OPTIONS
 
 [Install]
 WantedBy=multi-user.target
