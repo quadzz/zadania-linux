@@ -17,12 +17,13 @@ W utworzonym katalogu wklej poniższą konfigurację
 ```text
 [Unit]
 Description=Node Exporter
-Requires=node_exporter.socket
+After=network.target
 
 [Service]
 User=node_exporter
-EnvironmentFile=/etc/sysconfig/node_exporter
-ExecStart=/usr/local/bin/node_exporter --web.systemd-socket $OPTIONS
+Group=node_exporter
+Type=simple
+ExecStart=/usr/local/bin/node_exporter
 
 [Install]
 WantedBy=multi-user.target
