@@ -1,7 +1,10 @@
 # systemd
 Pobierz poniższy plik binarny node_exportera.
-(`cd /tmp && curl -OL https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz`)
-(cd /tmp && tar -xvf /tmp/node_exporter-1.2.2.linux-amd64.tar.gz)
+dla ubuntu: `cd /tmp && curl -OL https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz`
+dla macOS: `curl -OL https://github.com/prometheus/node_exporter/releases/download/v1.7.0/node_exporter-1.7.0.linux-arm64.tar.gz`
+
+dla ubuntu: `cd /tmp && tar -xvf /tmp/node_exporter-1.2.2.linux-amd64.tar.gz`
+dla macOS: `cd /tmp && tar -xvf /tmp/node_exporter-1.7.0.linux-arm64.tar.gz`
 
 Utwórz użytkownika o nazwie node_exporter z katalogiem domowym
 
